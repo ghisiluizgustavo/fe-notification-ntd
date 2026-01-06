@@ -1,6 +1,6 @@
 export enum NotificationCategory {
   SPORTS = 'SPORTS',
-  FINANCE = 'FINANCE',
+  FINANCIAL = 'FINANCIAL',
   MOVIES = 'MOVIES',
 }
 

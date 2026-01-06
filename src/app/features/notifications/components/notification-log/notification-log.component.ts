@@ -93,7 +93,7 @@ export class NotificationLogComponent implements OnInit {
     switch (category) {
       case 'SPORTS':
         return `${baseClasses} bg-orange-100 text-orange-800`;
-      case 'FINANCE':
+      case 'FINANCIAL':
         return `${baseClasses} bg-emerald-100 text-emerald-800`;
       case 'MOVIES':
         return `${baseClasses} bg-pink-100 text-pink-800`;

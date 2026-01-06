@@ -27,7 +27,7 @@ export class MessageFormComponent {
 
   categories: Array<{ value: NotificationCategory; label: string }> = [
     { value: NotificationCategory.SPORTS, label: 'Sports' },
-    { value: NotificationCategory.FINANCE, label: 'Finance' },
+    { value: NotificationCategory.FINANCIAL, label: 'Financial' },
     { value: NotificationCategory.MOVIES, label: 'Movies' }
   ];
 
