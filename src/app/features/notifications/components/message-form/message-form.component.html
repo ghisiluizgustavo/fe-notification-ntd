@@ -1,0 +1,63 @@
+<div class="bg-white rounded-lg shadow-md p-6 mb-8">
+  <h2 class="text-2xl font-bold text-gray-900 mb-6">Submit New Notification</h2>
+
+  <app-alert *ngIf="showSuccess" type="success" [visible]="showSuccess">
+    {{ successMessage }}
+  </app-alert>
+
+  <app-alert *ngIf="showError" type="error" [visible]="showError">
+    {{ errorMessage }}
+  </app-alert>
+
+  <form [formGroup]="messageForm" (ngSubmit)="onSubmit()" class="space-y-6">
+    <div>
+      <label for="category" class="block text-sm font-medium text-gray-700 mb-2">
+        Category <span class="text-red-500">*</span>
+      </label>
+      <select
+        id="category"
+        formControlName="category"
+        class="block w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+        [class.border-red-500]="categoryControl?.invalid && categoryControl?.touched"
+        [class.border-gray-300]="!categoryControl?.invalid || !categoryControl?.touched"
+      >
+        <option value="" disabled>Select a category</option>
+        <option *ngFor="let cat of categories" [value]="cat.value">
+          {{ cat.label }}
+        </option>
+      </select>
+      <p *ngIf="categoryControl?.invalid && categoryControl?.touched" class="mt-1 text-sm text-red-600">
+        Category is required
+      </p>
+    </div>
+
+    <div>
+      <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
+        Message <span class="text-red-500">*</span>
+      </label>
+      <textarea
+        id="message"
+        formControlName="content"
+        rows="4"
+        class="block w-full px-3 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
+        [class.border-red-500]="messageControl?.invalid && messageControl?.touched"
+        [class.border-gray-300]="!messageControl?.invalid || !messageControl?.touched"
+        placeholder="Enter your notification message..."
+      ></textarea>
+      <p *ngIf="messageControl?.invalid && messageControl?.touched" class="mt-1 text-sm text-red-600">
+        Message is required and must not be empty
+      </p>
+    </div>
+
+    <div class="flex items-center justify-end">
+      <app-button
+        type="submit"
+        variant="primary"
+        [disabled]="messageForm.invalid"
+        [loading]="isSubmitting"
+      >
+        {{ isSubmitting ? 'Submitting...' : 'Submit Notification' }}
+      </app-button>
+    </div>
+  </form>
+</div>
